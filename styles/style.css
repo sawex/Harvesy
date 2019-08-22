@@ -1200,3 +1200,46 @@ ul li ul .mobile-header__social-dropdown-list {
     margin-right: 0;
   }
 }
+
+
+
+
+
+
+
+
+.her {
+  /*width: 476.2px;*/
+  /*height: 363.4px;*/
+  width: 105px;
+    height: 80px;
+  z-index: 999;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: toTop 1s;
+  transition: ease-in-out 1s; 
+    opacity: .2;
+}
+
+@keyframes toTop {
+  from {  
+    /*width: 476.2px;*/
+    /*height: 363.4px;*/
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: ease-in-out 1s;
+    opacity: .2;
+  }
+  to {
+    /*width: 105px;*/
+    /*height: 80px;*/
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 5px);
+    transition: ease-in-out 1s;
+    opacity: 1;
+  }
+}
