@@ -120,6 +120,7 @@ body {
   display: block;
   width: 105px;
   height: 80px;
+  opacity: 0;
 }
 
 .logo__image {
@@ -685,7 +686,7 @@ body {
 }
 
 .popup-box {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -693,6 +694,9 @@ body {
   min-height: 220px;
   background: #5F5F5F;
   border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 999;
 }
 
 .close-btn {
@@ -713,12 +717,16 @@ body {
 }
 
 .popup__form {
-  min-height: 500px;
+  min-height: 220px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 24px;
+}
+
+.booking-popup__form {
+  min-height: 500px;
 }
 
 .popup__label {
@@ -796,7 +804,30 @@ body {
 .mobile-header__nav-menu {
   height: 0;
   visibility: hidden;
+  transition: ease-in .2s;
+  opacity: 0;
+}
+
+.opacity {
+  opacity: 1 !important;
+}
+
+.mobile-header__nav-container {
+  visibility: hidden;
+  height: 0;
+  width: 100%;
+  position: absolute;
+  top: 5.7rem;
+  background: #000;
+  z-index: 999;
   transition: ease-in .6s;
+}
+
+.visible {
+  visibility: visible !important;
+  transition: ease-in .6s;
+  /*height: 247px;*/
+  opacity: 1;
 }
 
 .animated {
@@ -818,16 +849,6 @@ body {
   top: 50%;
   left: 2rem;
   transform: translate(0, -50%);
-}
-
-.mobile-header__hamburger-btn {
-  padding: 0;
-  background: transparent url(../images/icons/hamburger-menu.svg) center no-repeat;
-  background-size: cover;
-  width: 30px;
-  height: 30px;
-  border: none;
-  cursor: pointer;
 }
 
 .mobile-header__social-menu--open-btn {
@@ -1002,10 +1023,10 @@ ul li ul .mobile-header__social-dropdown-list {
   .main-header__nav-menu {
     flex-direction: column;
     width: 100%;
-    position: absolute;
-    top: 5.7rem;
+    /*position: absolute;*/
+    /*top: 5.7rem;*/
     background: #000;
-    z-index: 999;
+    /*z-index: 999;*/
     align-items: center;
     /*padding: 2rem;*/
   }
@@ -1051,6 +1072,10 @@ ul li ul .mobile-header__social-dropdown-list {
 
   .social-img {
     fill: #fff;
+  }
+
+  .lang-label--in-menu {
+    display: none;
   }
 }
 
@@ -1180,6 +1205,24 @@ ul li ul .mobile-header__social-dropdown-list {
   .contacts__info-box {
     margin-right: 0;
   }
+
+  .lang-label--disabled {
+    display: none;
+  }
+
+  .lang-label--in-menu {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.3);
+    top: 10%;
+    left: 33%;
+    opacity: 0;
+    transition: ease-in-out .3s;
+    visibility: hidden;
+  }
+
+  .mobile-header__nav-menu {
+    margin-top: 24px;
+  }
 }
 
 @media screen and (max-width: 380px) {
@@ -1209,24 +1252,51 @@ ul li ul .mobile-header__social-dropdown-list {
 
 
 .her {
-  /*width: 476.2px;*/
-  /*height: 363.4px;*/
+  width: 476.2px;
+  height: 363.4px;
   width: 105px;
     height: 80px;
-  z-index: 999;
+  z-index: 99999;
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: toTop 1s;
+  animation: toTop 2s;
   transition: ease-in-out 1s; 
     opacity: .2;
 }
 
+.her2 {
+  opacity: 0;
+  transition: ease-in .6s;
+}
+
+.her3 {
+  opacity: 1;
+  transition: ease-in .6s;
+}
+
+.overlay {
+  background: #000;
+  animation: opacity 2s;
+  transition: ease-in-out 1s; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+@keyframes opacity {
+  from {opacity: 1;}
+  to { opacity: 0;}
+}
+
 @keyframes toTop {
   from {  
-    /*width: 476.2px;*/
-    /*height: 363.4px;*/
+    width: 476.2px;
+    height: 363.4px;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -1234,12 +1304,26 @@ ul li ul .mobile-header__social-dropdown-list {
     opacity: .2;
   }
   to {
-    /*width: 105px;*/
-    /*height: 80px;*/
+    width: 105px;
+    height: 80px;
     top: 0;
     left: 50%;
     transform: translate(-50%, 5px);
     transition: ease-in-out 1s;
     opacity: 1;
   }
+}
+
+.background-popup {
+  /*display: none;*/
+  visibility: hidden;
+  opacity: 0;
+  transition: ease-in-out .3s;
+}
+
+.block {
+/*  display: block;*/
+  visibility: visible;
+  opacity: 1;
+  transition: ease-in-out .6s;
 }
