@@ -47,27 +47,21 @@ if ( ! function_exists( 'mst_harvesy_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'mst_harvesy' ),
-		) );
+		register_nav_menus( [
+			'menu-1' => esc_html__( 'Primary menu', 'mst_harvesy' ),
+		] );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
 		 */
-		add_theme_support( 'html5', array(
+		add_theme_support( 'html5', [
 			'search-form',
 			'comment-form',
 			'comment-list',
 			'gallery',
 			'caption',
-		) );
-
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'mst_harvesy_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
+		] );
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -77,30 +71,16 @@ if ( ! function_exists( 'mst_harvesy_setup' ) ) :
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
-		add_theme_support( 'custom-logo', array(
+		add_theme_support( 'custom-logo', [
 			'height'      => 250,
 			'width'       => 250,
 			'flex-width'  => true,
 			'flex-height' => true,
-		) );
+		] );
 	}
 endif;
-add_action( 'after_setup_theme', 'mst_harvesy_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function mst_harvesy_content_width() {
-	// This variable is intended to be overruled from themes.
-	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'mst_harvesy_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'mst_harvesy_content_width', 0 );
+add_action( 'after_setup_theme', 'mst_harvesy_setup' );
 
 /**
  * Register widget area.
@@ -138,40 +118,36 @@ function mst_harvesy_widgets_init() {
 		'after_title'   => '',
 	] );
 }
+
 add_action( 'widgets_init', 'mst_harvesy_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
 function mst_harvesy_scripts() {
-	wp_enqueue_style( 
+	wp_enqueue_style(
 		'mst_harvesy-bootstrap-css',
 		get_template_directory_uri() . '/css/bootstrap-grid.min.css',
 		[],
-		MST_HARVESY_VER 
+		MST_HARVESY_VER
 	);
 
 	wp_enqueue_style(
-	 'mst_harvesy-style', 
+	 'mst_harvesy-style',
 		get_stylesheet_uri(),
 		[],
 		MST_HARVESY_VER
 	);
 
-	wp_enqueue_script( 
-		'mst_harvesy-main', 
-		get_template_directory_uri() . '/js/main.js', 
-		[], 
-		MST_HARVESY_VER, 
-		true 
+	wp_enqueue_script(
+		'mst_harvesy-main',
+		get_template_directory_uri() . '/js/main.js',
+		[],
+		MST_HARVESY_VER,
+		true
 	);
-
-	wp_enqueue_script( 'mst_harvesy-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
+
 add_action( 'wp_enqueue_scripts', 'mst_harvesy_scripts' );
 
 /**
@@ -201,9 +177,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-
 /**
  * Set custom logo classes.
+ *
+ * @param string $html Logo markup
+ * @return string $html New logo markup
  */
 function change_logo_class( $html ) {
   $html = str_replace( 'custom-logo-link', 'logo', $html );
