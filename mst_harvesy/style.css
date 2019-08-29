@@ -1,3 +1,16 @@
+/*!
+Theme Name: Harvesy
+Theme URI: http://underscores.me/
+Author: Verba Danil
+Author URI: https://github.com/sawex
+Description: Landing page for video operator
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: mst_harvesy
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
 /*@-webkit-keyframes zoomOutUp {
   40% {
     opacity: 1;
@@ -128,7 +141,7 @@ body {
   height: 100%;
 }
 
-.main-header__logo {
+.main-header .logo {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1251,7 +1264,7 @@ ul li ul .mobile-header__social-dropdown-list {
 
 
 
-.her {
+.loader-logo {
   width: 476.2px;
   height: 363.4px;
   width: 105px;
@@ -1266,12 +1279,12 @@ ul li ul .mobile-header__social-dropdown-list {
     opacity: .2;
 }
 
-.her2 {
+.loader-content-hidden {
   opacity: 0;
   transition: ease-in .6s;
 }
 
-.her3 {
+.loader-content-visible {
   opacity: 1;
   transition: ease-in .6s;
 }
