@@ -44,7 +44,9 @@
 								</li>							
 							</ul> -->
 
-							<button class="button booking-btn booking"> <?php esc_html_e( 'Booking', 'mst_harvesy' ); ?> </button>
+							<button class="button booking-btn booking">
+                <?php esc_html_e( 'Booking', 'mst_harvesy' ); ?>
+              </button>
 						</nav>
 						
 						<div class="main-footer__logo-and-slogan">
@@ -106,8 +108,14 @@
 				</div>
 			</div>
 			<div class="main-footer__copyrigt-container">
-				<p class="main-footer__copyrygt">Harvesy studio © <?php echo date('Y');
-				?>, All rights reserved.</p>
+				<p class="main-footer__copyrygt">
+          <?php
+            printf(
+              esc_html__( 'Harvesy studio © %d, All rights reserved', 'mst_harvesy' ),
+              date('Y')
+            );
+          ?>
+        </p>
 			</div>
 	</footer>
 
