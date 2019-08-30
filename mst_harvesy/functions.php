@@ -49,6 +49,7 @@ if ( ! function_exists( 'mst_harvesy_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( [
 			'menu-1' => esc_html__( 'Primary menu', 'mst_harvesy' ),
+			'lang-menu' => esc_html__( 'Language menu', 'mst_harvesy' ),
 		] );
 
 		/*

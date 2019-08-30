@@ -45,20 +45,7 @@
 									'container'			  => false,
 								] );
 							?>
-
-							<!-- <label class="lang-label lang-label--in-menu" for="lang-selelect">
-								<select name="lang" class="lang-select" id="lang-selelect">
-									<option value="" class="lang-option">
-										<a href="#" class="lang-choice">Eng</a>
-									</option>
-									<option value="" class="lang-option">
-										<a href="#" class="lang-choice">Ru</a>
-									</option>
-								</select>
-
-								<img src="images/icons/down-arrow.svg" class="lang-label__dropdown-img">
-							
-							</label> -->
+					
 
 							<?php
 								wp_nav_menu( [
@@ -133,17 +120,13 @@
 
 					<?php the_custom_logo(); ?>
 
-					<label class="lang-label loader-content-hidden" for="lang-selelect">
-						<select name="lang" class="lang-select" id="lang-selelect">
-							<option value="" class="lang-option">
-								<a href="#" class="lang-choice">Eng</a>
-							</option>
-							<option value="" class="lang-option">
-								<a href="#" class="lang-choice">Ru</a>
-							</option>
-						</select>
-						<img src="images/icons/down-arrow.svg" class="lang-label__dropdown-img">
-					</label>
+							<?php
+								wp_nav_menu( [
+									'theme_location'  => 'lang-menu',
+									'menu_id'         => 'language-menu',
+									'container'			  => false,
+								] );
+							?>
 
 					<?php
            	if ( is_active_sidebar( 'desktop-header-sidebar' ) ) {
