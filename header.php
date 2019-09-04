@@ -45,11 +45,10 @@
 									'container'			  => false,
 								] );
 							?>
-					
 
 							<?php
 								wp_nav_menu( [
-									'theme_location'  => 'menu-1',
+									'theme_location'  => 'header-menu',
 									'menu_id'         => 'primary-menu',
 									'container'			  => false,
 									'menu_class' 		  => 'main-header__nav-menu mobile-header__nav-menu',
@@ -60,20 +59,20 @@
 						</div>
 						
 						<?php the_custom_logo(); ?>
-
-							<label class="lang-label lang-label--disabled" for="lang-selelect">
-								<select name="lang" class="lang-select" id="lang-selelect">
-									<option value="" class="lang-option">
-										<a href="#" class="lang-choice">Eng</a>
-									</option>
-									<option value="" class="lang-option">
-										<a href="#" class="lang-choice">Ru</a>
-									</option>
-								</select>
-
-								<img src="images/icons/down-arrow.svg" class="lang-label__dropdown-img">
-							
-							</label>
+<!---->
+<!--							<label class="lang-label lang-label--disabled" for="lang-selelect">-->
+<!--								<select name="lang" class="lang-select" id="lang-selelect">-->
+<!--									<option value="" class="lang-option">-->
+<!--										<a href="#" class="lang-choice">Eng</a>-->
+<!--									</option>-->
+<!--									<option value="" class="lang-option">-->
+<!--										<a href="#" class="lang-choice">Ru</a>-->
+<!--									</option>-->
+<!--								</select>-->
+<!---->
+<!--								<img src="images/icons/down-arrow.svg" class="lang-label__dropdown-img">-->
+<!--							-->
+<!--							</label>-->
 
 							<?php
               	if ( is_active_sidebar( 'mobile-header-sidebar' ) ) {
@@ -84,8 +83,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 		<div class="container-fluid desktop-header">
 			<div class="row">
@@ -120,17 +117,13 @@
 
 					<?php the_custom_logo(); ?>
 
-					<label class="lang-label loader-content-hidden" for="lang-selelect">
-						<select name="lang" class="lang-select" id="lang-selelect">
-							<option value="" class="lang-option">
-								<a href="#" class="lang-choice">Eng</a>
-							</option>
-							<option value="" class="lang-option">
-								<a href="#" class="lang-choice">Ru</a>
-							</option>
-						</select>
-						<img src="images/icons/down-arrow.svg" class="lang-label__dropdown-img">
-					</label>
+							<?php
+								wp_nav_menu( [
+									'theme_location'  => 'lang-menu',
+									'menu_id'         => 'language-menu',
+									'container'			  => false,
+								] );
+							?>
 
 					<?php
            	if ( is_active_sidebar( 'desktop-header-sidebar' ) ) {

@@ -8,7 +8,7 @@
  */
 
 if ( ! defined('MST_HARVESY_VER' ) ) {
-	define( 'MST_HARVESY_VER', '1.0.0' );
+	define( 'MST_HARVESY_VER', '1.0.1' );
 }
 
 if ( ! function_exists( 'mst_harvesy_setup' ) ) :
@@ -46,9 +46,10 @@ if ( ! function_exists( 'mst_harvesy_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( [
-			'menu-1' => esc_html__( 'Primary menu', 'mst_harvesy' ),
+  	register_nav_menus( [
+			'header-menu' => esc_html__( 'Header menu', 'mst_harvesy' ),
+			'footer-menu' => esc_html__( 'Footer menu', 'mst_harvesy' ),
+			'lang-menu' => esc_html__( 'Language menu', 'mst_harvesy' ),
 		] );
 
 		/*

@@ -11,73 +11,37 @@ Text Domain: mst_harvesy
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
-/*@-webkit-keyframes zoomOutUp {
-  40% {
-    opacity: 1;
-    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
-    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
-    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
-    -webkit-transform-origin: center bottom;
-    transform-origin: center bottom;
-    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
-    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
-  }
+@font-face {
+  font-family: Myriad;
+  font-display: swap;
+  src: url('./fonts/MyriadPro-Semibold.woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@keyframes zoomOutUp {
-  40% {
-    opacity: 1;
-    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
-    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
-    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
-    -webkit-transform-origin: center bottom;
-    transform-origin: center bottom;
-    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
-    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
-  }
+@font-face {
+  font-family: NeoSans;
+  font-display: swap;
+  src: url('./fonts/NeoSansPro-Regular.woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.zoomOutUp {
-  -webkit-animation-name: zoomOutUp;
-  animation-name: zoomOutUp;
-}*/
+/*html {*/
+  /*box-sizing: border-box;*/
+/*}*/
 
-html {
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
+/**,*/
+/**::before,*/
+/**::after {*/
+  /*box-sizing: inherit;*/
+/*}*/
 
 body {
   margin: 0;
   padding: 0;
   background-color: #262626;
-}
-
-@font-face {
-  font-family: NeoSans;
-  src:url(../fonts/NeoSansPro-Regular.woff);
-}
-
-@font-face {
-  font-family: 'Myriad';
-  src:url('../fonts/MyriadPro-Semibold.woff');
+  font-family: NeoSans, Helvetica Neue, sans-serif;
 }
 
 .main-header {
@@ -156,7 +120,7 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-image: url(../images/icons/down-arrow.svg);
+  background-image: url(images/icons/down-arrow.svg);
 }
 
 .lang-label__dropdown-img {
@@ -336,7 +300,7 @@ body {
 .video-gallery__opening-button {
   margin: 0;
   padding: 0;
-  background: transparent url(../images/icons/plus-zoom.svg) center;
+  background: transparent url(images/icons/plus-zoom.svg) center;
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -350,7 +314,7 @@ body {
 }
 
 .video-gallery__opening-button {
-  background: transparent url(../images/icons/play-button.svg) center;
+  background: transparent url(images/icons/play-button.svg) center;
 }
 
 .gallery__slider-navigation {
@@ -369,7 +333,7 @@ body {
   border: none;
   width: 70px;
   height: 70px;
-  background: transparent url(../images/icons/arrow-right.svg) center;
+  background: transparent url(images/icons/arrow-right.svg) center;
   background-size: cover;
   cursor: pointer;
 }
@@ -717,7 +681,7 @@ body {
   right: 10px;
   top: 10px;
   border: none;
-  background: transparent url(../images/icons/close-button.svg) center;
+  background: transparent url(images/icons/close-button.svg) center;
   background-size: cover;
   width: 15px;
   height: 15px;
@@ -767,13 +731,13 @@ body {
 }
 
 .popup__input--tel {
-  background: rgba(255, 255, 255, 0.3) url(../images/icons/phone-call.svg) center no-repeat;
+  background: rgba(255, 255, 255, 0.3) url(images/icons/phone-call.svg) center no-repeat;
   background-position: 5px center;
   background-size: 13px 13px; 
 }
 
 .popup__input--email {
-  background: rgba(255, 255, 255, 0.3) url(../images/icons/mail.svg) center no-repeat;
+  background: rgba(255, 255, 255, 0.3) url(images/icons/mail.svg) center no-repeat;
   background-position: 5px 3px;
   background-size: 13px 13px;
 }
@@ -866,7 +830,7 @@ body {
 
 .mobile-header__social-menu--open-btn {
   display: block;
-  background: transparent url(../images/icons/share.svg) center no-repeat;
+  background: transparent url(images/icons/share.svg) center no-repeat;
   width: 25px;
   height: 25px;
 }
