@@ -27,16 +27,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   font-style: normal;
 }
 
-/*html {*/
-  /*box-sizing: border-box;*/
-/*}*/
-
-/**,*/
-/**::before,*/
-/**::after {*/
-  /*box-sizing: inherit;*/
-/*}*/
-
 body {
   margin: 0;
   padding: 0;
@@ -217,8 +207,8 @@ body {
 }
 
 .gallery__slider {
-  display: flex;
-  flex-wrap: wrap;
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
   position: relative;
 }
 

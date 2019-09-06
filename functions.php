@@ -118,6 +118,16 @@ function mst_harvesy_widgets_init() {
 		'before_title'  => '',
 		'after_title'   => '',
 	] );
+
+	register_sidebar( [
+		'name'          => esc_html__( 'Instagram widget', 'mst_harvesy' ),
+		'id'            => 'instagram-sidebar',
+		'description'   => esc_html__( 'Add widgets here.', 'mst_harvesy' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	] );
 }
 
 add_action( 'widgets_init', 'mst_harvesy_widgets_init' );
@@ -134,10 +144,33 @@ function mst_harvesy_scripts() {
 	);
 
 	wp_enqueue_style(
+		'mst_harvesy-slick-css',
+		get_template_directory_uri() . '/css/slick.css',
+		[],
+		MST_HARVESY_VER
+	);
+
+	wp_enqueue_style(
 	 'mst_harvesy-style',
 		get_stylesheet_uri(),
 		[],
 		MST_HARVESY_VER
+	);
+
+	wp_enqueue_script(
+		'mst_harvesy-slick-js',
+		get_template_directory_uri() . '/js/slick.min.js',
+		[],
+		MST_HARVESY_VER,
+		true
+	);
+
+	wp_enqueue_script(
+		'mst_harvesy-one-picture-slider-js',
+		get_template_directory_uri() . '/js/slider.js',
+		[],
+		MST_HARVESY_VER,
+		true
 	);
 
 	wp_enqueue_script(
@@ -201,6 +234,7 @@ function add_menu_link_class( $atts, $item, $args ) {
   }
   return $atts;
 }
+
 add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
 
 function add_menu_list_item_class( $classes, $item, $args ) {
@@ -209,4 +243,31 @@ function add_menu_list_item_class( $classes, $item, $args ) {
   }
   return $classes;
 }
+
 add_filter( 'nav_menu_css_class', 'add_menu_list_item_class', 1, 3 );
+
+/**
+ * Register AJAX handler for callback forms
+ */
+function mst_harvesy_handleCallback() {
+  try {
+    $name = $_POST['data']['name'] ?: '-';
+    $email = $_POST['data']['email'] ?: '-';
+    $phone = $_POST['data']['phone'] ?: '-';
+    $description = $_POST['data']['description'] ?: '-';
+
+    wp_mail(
+      get_option( 'admin_email' ),
+      'На сайте заполнена новая форма',
+      "Имя: $name \n Email: $email \n Телефон: $phone \n Описание задачи: $description"
+    );
+
+    wp_send_json_success( [ 'status' => 'OK' ] );
+
+  } catch ( Exception $e ) {
+    wp_send_json_error( [ 'error' => $e ] );
+  }
+}
+
+add_action( 'wp_ajax_mst_harvesy_cb', 'mst_harvesy_handleCallback' );
+add_action( 'wp_ajax_nopriv_mst_harvesy_cb', 'mst_harvesy_handleCallback' );
