@@ -138,14 +138,14 @@ add_action( 'widgets_init', 'mst_harvesy_widgets_init' );
 function mst_harvesy_scripts() {
 	wp_enqueue_style(
 		'mst_harvesy-bootstrap-css',
-		get_template_directory_uri() . '/css/bootstrap-grid.min.css',
+		get_template_directory_uri() . '/assets/css/bootstrap-grid.min.css',
 		[],
 		MST_HARVESY_VER
 	);
 
 	wp_enqueue_style(
 		'mst_harvesy-slick-css',
-		get_template_directory_uri() . '/css/slick.css',
+		get_template_directory_uri() . '/assets/css/slick.css',
 		[],
 		MST_HARVESY_VER
 	);
@@ -157,9 +157,11 @@ function mst_harvesy_scripts() {
 		MST_HARVESY_VER
 	);
 
+	wp_enqueue_script( 'jquery' );
+
 	wp_enqueue_script(
 		'mst_harvesy-slick-js',
-		get_template_directory_uri() . '/js/slick.min.js',
+		get_template_directory_uri() . '/assets/js/slick.min.js',
 		[],
 		MST_HARVESY_VER,
 		true
@@ -167,7 +169,7 @@ function mst_harvesy_scripts() {
 
 	wp_enqueue_script(
 		'mst_harvesy-one-picture-slider-js',
-		get_template_directory_uri() . '/js/slider.js',
+		get_template_directory_uri() . '/assets/js/slider.js',
 		[],
 		MST_HARVESY_VER,
 		true
@@ -175,7 +177,7 @@ function mst_harvesy_scripts() {
 
 	wp_enqueue_script(
 		'mst_harvesy-main',
-		get_template_directory_uri() . '/js/main.js',
+		get_template_directory_uri() . '/assets/js/main.js',
 		[],
 		MST_HARVESY_VER,
 		true

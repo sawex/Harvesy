@@ -14,7 +14,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 @font-face {
   font-family: Myriad;
   font-display: swap;
-  src: url('./fonts/MyriadPro-Semibold.woff');
+  src: url('assets/fonts/MyriadPro-Semibold.woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -22,7 +22,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 @font-face {
   font-family: NeoSans;
   font-display: swap;
-  src: url('./fonts/NeoSansPro-Regular.woff');
+  src: url('assets/fonts/NeoSansPro-Regular.woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -110,7 +110,7 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-image: url(images/icons/down-arrow.svg);
+  background-image: url(assets/images/icons/down-arrow.svg);
 }
 
 .lang-label__dropdown-img {
@@ -290,7 +290,7 @@ body {
 .video-gallery__opening-button {
   margin: 0;
   padding: 0;
-  background: transparent url(images/icons/plus-zoom.svg) center;
+  background: transparent url(assets/images/icons/plus-zoom.svg) center;
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -304,7 +304,7 @@ body {
 }
 
 .video-gallery__opening-button {
-  background: transparent url(images/icons/play-button.svg) center;
+  background: transparent url(assets/images/icons/play-button.svg) center;
 }
 
 .gallery__slider-navigation {
@@ -323,7 +323,7 @@ body {
   border: none;
   width: 70px;
   height: 70px;
-  background: transparent url(images/icons/arrow-right.svg) center;
+  background: transparent url(assets/images/icons/arrow-right.svg) center;
   background-size: cover;
   cursor: pointer;
 }
@@ -671,7 +671,7 @@ body {
   right: 10px;
   top: 10px;
   border: none;
-  background: transparent url(images/icons/close-button.svg) center;
+  background: transparent url(assets/images/icons/close-button.svg) center;
   background-size: cover;
   width: 15px;
   height: 15px;
@@ -721,13 +721,13 @@ body {
 }
 
 .popup__input--tel {
-  background: rgba(255, 255, 255, 0.3) url(images/icons/phone-call.svg) center no-repeat;
+  background: rgba(255, 255, 255, 0.3) url(assets/images/icons/phone-call.svg) center no-repeat;
   background-position: 5px center;
   background-size: 13px 13px; 
 }
 
 .popup__input--email {
-  background: rgba(255, 255, 255, 0.3) url(images/icons/mail.svg) center no-repeat;
+  background: rgba(255, 255, 255, 0.3) url(assets/images/icons/mail.svg) center no-repeat;
   background-position: 5px 3px;
   background-size: 13px 13px;
 }
@@ -820,7 +820,7 @@ body {
 
 .mobile-header__social-menu--open-btn {
   display: block;
-  background: transparent url(images/icons/share.svg) center no-repeat;
+  background: transparent url(assets/images/icons/share.svg) center no-repeat;
   width: 25px;
   height: 25px;
 }
@@ -1005,7 +1005,7 @@ ul li ul .mobile-header__social-dropdown-list {
   .main-header__nav-list-item {
     margin-bottom: 20px;
     margin-right: 0;
-    visibility: none;
+    visibility: hidden; /*none*/
     opacity: 0;
     transition: ease-in-out .3s;
   }
