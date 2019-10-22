@@ -8,7 +8,7 @@
  */
 
 if ( ! defined('MST_HARVESY_VER' ) ) {
-	define( 'MST_HARVESY_VER', '1.0.1' );
+	define( 'MST_HARVESY_VER', '1.0.2' );
 }
 
 if ( ! function_exists( 'mst_harvesy_setup' ) ) :
@@ -120,7 +120,7 @@ function mst_harvesy_widgets_init() {
 	] );
 
 	register_sidebar( [
-		'name'          => esc_html__( 'Instagram widget', 'mst_harvesy' ),
+		'name'          => esc_html__( 'Instagram widget area', 'mst_harvesy' ),
 		'id'            => 'instagram-sidebar',
 		'description'   => esc_html__( 'Add widgets here.', 'mst_harvesy' ),
 		'before_widget' => '',
@@ -168,8 +168,8 @@ function mst_harvesy_scripts() {
 	);
 
 	wp_enqueue_script(
-		'mst_harvesy-one-picture-slider-js',
-		get_template_directory_uri() . '/assets/js/slider.js',
+		'mst_harvesy-bigpicture-js',
+		get_template_directory_uri() . '/assets/js/bigpicture.min.js',
 		[],
 		MST_HARVESY_VER,
 		true
@@ -187,26 +187,6 @@ function mst_harvesy_scripts() {
 add_action( 'wp_enqueue_scripts', 'mst_harvesy_scripts' );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -219,44 +199,44 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * @param string $html Logo markup
  * @return string $html New logo markup
  */
-function change_logo_class( $html ) {
+function mst_harvesy_change_logo_class( $html ) {
   $html = str_replace( 'custom-logo-link', 'logo', $html );
   $html = str_replace( 'custom-logo', 'logo__image', $html );
   return $html;
 }
 
-add_filter( 'get_custom_logo', 'change_logo_class' );
+add_filter( 'get_custom_logo', 'mst_harvesy_change_logo_class' );
 
 /**
  * Set custom nav's <li> and <a> classes.
  */
-function add_menu_link_class( $atts, $item, $args ) {
+function mst_harvesy_add_menu_link_class( $atts, $item, $args ) {
   if ( property_exists( $args, 'link_class' ) ) {
     $atts['class'] = $args->link_class;
   }
   return $atts;
 }
 
-add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
+add_filter( 'nav_menu_link_attributes', 'mst_harvesy_add_menu_link_class', 1, 3 );
 
-function add_menu_list_item_class( $classes, $item, $args ) {
+function mst_harvesy_add_menu_list_item_class( $classes, $item, $args ) {
   if ( property_exists( $args, 'list_item_class' ) ) {
       $classes[] = $args->list_item_class;
   }
   return $classes;
 }
 
-add_filter( 'nav_menu_css_class', 'add_menu_list_item_class', 1, 3 );
+add_filter( 'nav_menu_css_class', 'mst_harvesy_add_menu_list_item_class', 1, 3 );
 
 /**
  * Register AJAX handler for callback forms
  */
-function mst_harvesy_handleCallback() {
+function mst_harvesy_handle_callback() {
   try {
-    $name = $_POST['data']['name'] ?: '-';
-    $email = $_POST['data']['email'] ?: '-';
-    $phone = $_POST['data']['phone'] ?: '-';
-    $description = $_POST['data']['description'] ?: '-';
+    $name = sanitize_text_field( $_POST['data']['name'] ) ?: '-';
+    $email = sanitize_email( $_POST['data']['email'] ) ?: '-';
+    $phone = sanitize_text_field( $_POST['data']['phone'] ) ?: '-';
+    $description = sanitize_textarea_field( $_POST['data']['description'] ) ?: '-';
 
     wp_mail(
       get_option( 'admin_email' ),
@@ -269,7 +249,9 @@ function mst_harvesy_handleCallback() {
   } catch ( Exception $e ) {
     wp_send_json_error( [ 'error' => $e ] );
   }
+
+  wp_die();
 }
 
-add_action( 'wp_ajax_mst_harvesy_cb', 'mst_harvesy_handleCallback' );
-add_action( 'wp_ajax_nopriv_mst_harvesy_cb', 'mst_harvesy_handleCallback' );
+add_action( 'wp_ajax_mst_harvesy_cb', 'mst_harvesy_handle_callback' );
+add_action( 'wp_ajax_nopriv_mst_harvesy_cb', 'mst_harvesy_handle_callback' );

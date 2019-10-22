@@ -9,7 +9,8 @@
  * @package Harvesy
  */
 
-$slogan = get_field('slogan');
+/* @var string $motto */
+$motto = wp_kses_post( get_field( 'motto' ) );
 ?>
 
   <footer class="main-footer">
@@ -36,7 +37,7 @@ $slogan = get_field('slogan');
 						<div class="main-footer__logo-and-slogan">
 							<?php the_custom_logo(); ?>
 
-							<p class="main-footer__slogan"><?php echo $slogan; ?></p>
+							<p class="main-footer__slogan"><?php echo $motto; ?></p>
 						</div>
 
 						<nav class="main-footer__social-nav">
@@ -65,70 +66,12 @@ $slogan = get_field('slogan');
   <!-- Popups -->
   <div class="background-popup"></div>
 
-  <div class="booking-popup popup-box form-container">
-    <button class="close-btn"
-            aria-label="<?php esc_attr_e( 'Close modal', 'mst_harvesy' ); ?>">
-    </button>
-    <form class="popup__form booking-popup__form">
-      <label class="popup__label">
-        <?php esc_html_e( 'Your name', 'mst_harvesy' ); ?>
-        <input name="name" class="popup__input" type="text" placeholder="Viktor">
-      </label>
+	<?php
+    get_template_part( 'template-parts/popups/popup', 'callback' );
+    get_template_part( 'template-parts/popups/popup', 'book' );
 
-      <label class="popup__label">
-        <?php esc_html_e( 'Your phone number', 'mst_harvesy' ); ?>
-        <input name="phone" class="popup__input popup__input--tel" type="tel" placeholder="+380671122333" required="">
-      </label>
-
-      <label class="popup__label">
-        <?php esc_html_e( 'Your email', 'mst_harvesy' ); ?>
-        <input name="email"
-               class="popup__input popup__input--email"
-               type="email"
-               placeholder="example@gmail.com"
-               required="">
-      </label>
-
-      <label class="popup__label">
-        <?php esc_html_e( 'Task description', 'mst_harvesy' ); ?>
-        <textarea name="description"
-                  class="popup__input popup__input--textarea"
-                  placeholder="
-                  <?php esc_html_e(
-                    'A brief description of the service you would like to receive',
-                    'mst_harvesy'
-                  ); ?>">
-        </textarea>
-      </label>
-
-      <input type="submit"
-             value="<?php esc_html_e( 'Send', 'mst_harvesy' ); ?>"
-             class="button popup__submit-btn">
-    </form>
-  </div>
-
-  <div class="callback-popup popup-box form-container">
-    <button class="close-btn"
-            aria-label="<?php esc_attr_e( 'Close modal', 'mst_harvesy' ); ?>">
-    </button>
-    <form class="popup__form">
-      <label class="popup__label">
-        <?php esc_html_e( 'Your phone number', 'mst_harvesy' ); ?>
-        <input name="phone" class="popup__input popup__input--tel" type="tel" placeholder="+380671122333" required="">
-      </label>
-<!--      TODO: Change Viktor and add name icon -->
-      <label class="popup__label">
-        <?php esc_html_e( 'Your name', 'mst_harvesy' ); ?>
-        <input name="name" class="popup__input" type="text" placeholder="Viktor">
-      </label>
-
-      <input type="submit"
-             value="<?php esc_html_e( 'Send', 'mst_harvesy' ); ?>"
-             class="button popup__submit-btn">
-    </form>
-  </div>
-
-	<?php wp_footer(); ?>
+    wp_footer();
+  ?>
 
 </body>
 </html>

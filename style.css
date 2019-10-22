@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Verba Danil
 Author URI: https://github.com/sawex
 Description: Landing page for video operator
-Version: 1.0.0
+Version: 1.0.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mst_harvesy
@@ -31,7 +31,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #262626;
-  font-family: NeoSans, Helvetica Neue, sans-serif;
+  font-family: NeoSans, 'Helvetica Neue', sans-serif;
 }
 
 .main-header {
@@ -69,7 +69,7 @@ body {
 .main-header__nav-link {
   text-decoration: none;
   text-transform: uppercase;
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
@@ -127,7 +127,7 @@ body {
   color: #fff;
   border: none;
   letter-spacing: 2px;
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -137,7 +137,7 @@ body {
 .lang-option {
   color: #fff;
   text-transform: uppercase;
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-size: 16px;
   text-transform: uppercase;
 }
@@ -177,7 +177,7 @@ body {
 }
 
 .secondary-title {
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
@@ -190,7 +190,7 @@ body {
 }
 
 .tertinary-title {
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
@@ -309,7 +309,8 @@ body {
 
 .gallery__slider-navigation {
   position: absolute;
-  top: 50%;
+  /*top: 50%;*/
+  top: calc(50% + (103px)/2);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -383,11 +384,12 @@ body {
 }
 
 .about-us__carousel-container {
-  display: flex;
+  /*display: flex;*/
   transition: transform .5s;
   will-change: transform;
   position: relative;
   z-index: 1;
+  width: 37vw;
   /*height: 100%;*/
 }
 
@@ -418,7 +420,7 @@ body {
 }
 
 .about-us__desc-text-box p {
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
   font-size: 16px;
   line-height: 19px;
   color: #fff;
@@ -436,11 +438,11 @@ body {
 .contacts__info-box p {
   color: #fff;
   font-size: 16px;
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
 }
 
 .contacts__list-item {
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
   list-style-type: none;
   color: #fff;
   font-size: 16px;
@@ -449,7 +451,7 @@ body {
 .contacts__link {
   text-decoration: none;
   color: rgba(255, 255, 255, .7);
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
   font-size: 16px;
 }
 
@@ -458,7 +460,7 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
   color: #fff;
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -534,20 +536,22 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 240px;
+  justify-content: space-between;
 }
 
 .main-footer__list-item {
   list-style-type: none;
   margin-bottom: 13px;
+  min-width: 106px;
 }
 
-.main-footer__list-item:nth-child(4) {
+/*.main-footer__list-item:nth-child(4) {
   margin-left: 24px;
 }
 
 .main-footer__list-item:nth-child(2) {
   margin-left: 59px;
-}
+}*/
 
 .main-footer__list-item:nth-child(3),
 .main-footer__list-item:nth-child(4) {
@@ -558,7 +562,7 @@ body {
   text-decoration: none;
   color: #8F8F8F;
   font-size: 20px;
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   /*font-weight: 600;*/
   line-height: 24px;
   text-transform: uppercase;
@@ -587,7 +591,7 @@ body {
 
 .main-footer__logo-and-slogan p {
   font-size: 16px;
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
   text-align: center;
   text-transform: uppercase;
   line-height: 19px;
@@ -635,7 +639,7 @@ body {
 
 .main-footer__copyrigt-container p {
   color: #fff;
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-size: 14px;
   line-height: 17px;
   text-transform: uppercase;
@@ -693,11 +697,11 @@ body {
 }
 
 .booking-popup__form {
-  min-height: 500px;
+  min-height: 450px;
 }
 
 .popup__label {
-  font-family: Myriad;
+  font-family: Myriad, sans-serif;
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 1px;
@@ -735,7 +739,7 @@ body {
 .popup__input::-moz-placeholder,
 .popup__input::-webkit-input-placeholder {
   color: #eee;
-  font-family: NeoSans;
+  font-family: NeoSans, sans-serif;
   font-size: 12px;
 }
 
@@ -746,7 +750,7 @@ body {
 }
 
 .booking-popup {
-  min-height: 500px;
+  min-height: 450px;
 }
 
 .popup__input--textarea {
@@ -978,6 +982,142 @@ ul li ul .mobile-header__social-dropdown-list {
   display: none;
 }
 
+.loader-logo {
+  width: 476.2px;
+  height: 363.4px;
+  width: 105px;
+    height: 80px;
+  z-index: 99999;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: toTop 2s;
+  transition: ease-in-out 1s; 
+    opacity: .2;
+}
+
+.loader-content-hidden {
+  opacity: 0;
+  transition: ease-in .6s;
+}
+
+.loader-content-visible {
+  opacity: 1;
+  transition: ease-in .6s;
+}
+
+.overlay {
+  background: #000;
+  animation: opacity 2s;
+  transition: ease-in-out 1s; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+@keyframes opacity {
+  from {opacity: 1;}
+  to { opacity: 0;}
+}
+
+@keyframes toTop {
+  from {  
+    width: 476.2px;
+    height: 363.4px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: ease-in-out 1s;
+    opacity: .2;
+  }
+  to {
+    width: 105px;
+    height: 80px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 5px);
+    transition: ease-in-out 1s;
+    opacity: 1;
+  }
+}
+
+.background-popup {
+  /*display: none;*/
+  visibility: hidden;
+  opacity: 0;
+  transition: ease-in-out .3s;
+}
+
+.block {
+/*  display: block;*/
+  visibility: visible;
+  opacity: 1;
+  transition: ease-in-out .6s;
+}
+
+/*After WP*/
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(50%, -50%);
+}
+
+.menu > .menu-item {
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  font-family: Myriad;
+}
+
+.sub-menu {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 0 0;
+  transition: ease-in .6s;
+}
+.menu > a {
+  position: relative;
+}
+
+.menu > .menu-item > a::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: -12px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-image: url(assets/images/icons/down-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.menu > .menu-item:hover .sub-menu {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: ease-in .6s;
+}
+
 @media screen and (max-width: 1200px) {
   .mobile-header {
     display: block;
@@ -1005,7 +1145,7 @@ ul li ul .mobile-header__social-dropdown-list {
   .main-header__nav-list-item {
     margin-bottom: 20px;
     margin-right: 0;
-    visibility: hidden; /*none*/
+    visibility: visible; /*none*/
     opacity: 0;
     transition: ease-in-out .3s;
   }
@@ -1043,6 +1183,24 @@ ul li ul .mobile-header__social-dropdown-list {
 
   .lang-label--in-menu {
     display: none;
+  }
+
+  .menu {
+    top: 32px;
+    right: 20%;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 24px;
+    opacity: 0;
+    transition: ease-in-out 130ms;
+    visibility: hidden;
+  }
+
+  .gallery__slider-nav-arrow-left::before, 
+  .gallery__slider-nav-arrow-right::before {
+    content: none;
   }
 }
 
@@ -1157,6 +1315,13 @@ ul li ul .mobile-header__social-dropdown-list {
   .main-footer__social-menu {
     width: 300px;
   }
+
+  .main-footer__list-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -1187,9 +1352,9 @@ ul li ul .mobile-header__social-dropdown-list {
     visibility: hidden;
   }
 
-  .mobile-header__nav-menu {
+/*  .mobile-header__nav-menu {
     margin-top: 24px;
-  }
+  }*/
 }
 
 @media screen and (max-width: 380px) {
@@ -1211,86 +1376,6 @@ ul li ul .mobile-header__social-dropdown-list {
   }
 }
 
-
-
-
-
-
-
-
-.loader-logo {
-  width: 476.2px;
-  height: 363.4px;
-  width: 105px;
-    height: 80px;
-  z-index: 99999;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: toTop 2s;
-  transition: ease-in-out 1s; 
-    opacity: .2;
-}
-
-.loader-content-hidden {
-  opacity: 0;
-  transition: ease-in .6s;
-}
-
-.loader-content-visible {
-  opacity: 1;
-  transition: ease-in .6s;
-}
-
-.overlay {
-  background: #000;
-  animation: opacity 2s;
-  transition: ease-in-out 1s; 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-}
-
-@keyframes opacity {
-  from {opacity: 1;}
-  to { opacity: 0;}
-}
-
-@keyframes toTop {
-  from {  
-    width: 476.2px;
-    height: 363.4px;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: ease-in-out 1s;
-    opacity: .2;
-  }
-  to {
-    width: 105px;
-    height: 80px;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 5px);
-    transition: ease-in-out 1s;
-    opacity: 1;
-  }
-}
-
-.background-popup {
-  /*display: none;*/
-  visibility: hidden;
-  opacity: 0;
-  transition: ease-in-out .3s;
-}
-
-.block {
-/*  display: block;*/
-  visibility: visible;
-  opacity: 1;
-  transition: ease-in-out .6s;
+.slick-slide > div {
+  margin-bottom: -5px;
 }

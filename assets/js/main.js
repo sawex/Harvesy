@@ -1,3 +1,5 @@
+/* global jQuery */
+
 const Main = function() {
   // Page loader elements
   this.logoLinks = document.querySelectorAll('.logo');
@@ -9,7 +11,6 @@ const Main = function() {
   this.hamburgerBtn = document.querySelector('.hamburger');
   this.mobileMenu = document.querySelector('.mobile-header__nav-container');
   this.mobileMenuList = document.querySelector('.mobile-header__nav-menu');
-  this.langMenu = document.querySelector('.lang-label--in-menu');
   this.listItem = document.querySelectorAll('.main-header__nav-list-item');
 
   // Booking form elements
@@ -21,19 +22,10 @@ const Main = function() {
   this.callbackBnt = document.querySelector('.contacts__callback-btn');
   this.callbackForm = document.querySelector('.callback-popup');
 
+  this.imageGallery = document.querySelectorAll('.photo-gallery .gallery__slider-image');
+
   // State
   this.isPopupOpened = false;
-
-  // One by one methods executing
-  this.init = function() {
-    this.initLoader();
-    this.initHamburgerMenu();
-    this.smoothAnchors();
-    // this.backToTop();
-    this.initForms();
-    this.setPhotoSlider();
-    this.setAboutSlider();
-  };
 };
 
 /**
@@ -42,6 +34,10 @@ const Main = function() {
  * @return {undefined}
  **/
 Main.prototype.initLoader = function() {
+  if (!this.loaderLogo || !this.logoLinks.length || !this.loaderLogo || !this.loaderOverlay || !this.hiddenContent) {
+    return;
+  }
+
   this.loaderLogo.addEventListener('animationend', () => {
     this.logoLinks.forEach((link) => {
       link.style.opacity = '1';
@@ -56,6 +52,19 @@ Main.prototype.initLoader = function() {
       });
     }, 300);
   });
+};
+
+/**
+ * Prevents location changing on active language clicking.
+ *
+ * @version 1.0.1
+ */
+Main.prototype.currentLanguagePreventClicking = function() {
+  const currentLanguage = document.querySelector('.wpml-ls-current-language > a');
+
+  if (currentLanguage) {
+    currentLanguage.addEventListener('click', (e) => e.preventDefault());
+  }
 };
 
 Main.prototype.initHamburgerMenu = function() {
@@ -76,6 +85,11 @@ Main.prototype.initHamburgerMenu = function() {
   });
 };
 
+/**
+ * Smooth scroll to an anchor target
+ *
+ * @version 1.0.2
+ */
 Main.prototype.smoothAnchors = function() {
   document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -84,6 +98,8 @@ Main.prototype.smoothAnchors = function() {
       const pageUrl = new URL(document.URL);
       const url = new URL(anchor.href);
       const hash = url.hash;
+
+      if (hash === '#') return;
 
       if (url.pathname === pageUrl.pathname) {
         const target = document.querySelector(hash);
@@ -207,6 +223,8 @@ Main.prototype.sendData = function(form, validateOptions = {}) {
  * @return {undefined}
  **/
 Main.prototype.initForms = function() {
+  if (!this.callbackBnt || !this.bookingBtns.length) return;
+
   // Open booking form on buttons click
   this.bookingBtns.forEach((el) => {
     el.addEventListener('click', () => {
@@ -270,6 +288,8 @@ Main.prototype.initForms = function() {
 };
 
 Main.prototype.setPhotoSlider = function() {
+  if (typeof jQuery !== 'function' || !document.querySelector('.gallery__slider')) return;
+
   jQuery('.gallery__slider').slick({
     prevArrow: jQuery('.gallery__slider-nav-arrow-left'),
     nextArrow: jQuery('.gallery__slider-nav-arrow-right'),
@@ -324,15 +344,76 @@ Main.prototype.setPhotoSlider = function() {
 };
 
 Main.prototype.setAboutSlider = function() {
-  if (typeof OnePictureSlider === 'function') {
-    const options = {
-      container: document.querySelector('.about-us__carousel-container'),
-      images: document.querySelectorAll('.about-us__carousel-item'),
-    };
+  if (typeof jQuery !== 'function' || !document.querySelector('.about-us__carousel-container')) return;
 
-    const brandSlider = new OnePictureSlider(options);
-    brandSlider.init();
-  }
+  jQuery('.about-us__carousel-container').slick({
+    prevArrow: '',
+    nextArrow: '',
+    dots: false,
+  });
+};
+
+Main.prototype.initPhotoViewer = function() {
+  if (typeof BigPicture !== 'function') return;
+
+  document.addEventListener('click', (e) => {
+    const el = e.target;
+
+    if (el.classList.contains('photo-gallery__opening-button')) {
+      const img = el.parentElement.previousElementSibling;
+
+      return BigPicture({
+        el: img,
+        imgSrc: img.src,
+        gallery: this.imageGallery,
+      });
+    }
+
+    if (el.classList.contains('gallery__slider-img-btn--photo')) {
+      const img = el.previousElementSibling;
+
+      return BigPicture({
+        el: img,
+        imgSrc: img.src,
+        gallery: this.imageGallery,
+      });
+    }
+  });
+};
+
+Main.prototype.initVideoViewer = function() {
+  if (typeof BigPicture !== 'function') return;
+
+  document.addEventListener('click', (e) => {
+    const el = e.target;
+
+    if (el.classList.contains('video-gallery__opening-button') ||
+      el.classList.contains('gallery__slider-img-btn--video')) {
+      const videoWrapper = el.closest('.gallery__slider-img-box');
+
+      if (!videoWrapper) return;
+
+      return BigPicture({
+        el: videoWrapper,
+        vimeoSrc: videoWrapper.dataset.videoId,
+      });
+    }
+  });
+};
+
+
+// One by one methods executing
+Main.prototype.init = function() {
+  this.initLoader();
+  this.currentLanguagePreventClicking();
+  this.initHamburgerMenu();
+  this.smoothAnchors();
+  // this.backToTop();
+  this.initForms();
+  this.setPhotoSlider();
+  this.initPhotoViewer();
+  this.initVideoViewer();
+  this.setAboutSlider();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
