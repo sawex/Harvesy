@@ -13,8 +13,17 @@ get_header();
       get_template_part( 'template-parts/home/section', 'videos' );
       get_template_part( 'template-parts/home/section', 'about' );
       get_template_part( 'template-parts/home/section', 'contacts' );
+
+      get_footer();
     ?>
 	</main>
 
-<?php
-get_footer();
+  <!-- Popups -->
+  <div class="background-popup"></div>
+  <?php
+    get_template_part( 'template-parts/popups/popup', 'callback' );
+    get_template_part( 'template-parts/popups/popup', 'book' );
+  ?>
+
+</body>
+</html>

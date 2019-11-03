@@ -1,4 +1,4 @@
-/* global jQuery */
+/* global jQuery, mainState */
 
 const Main = function() {
   // Page loader elements
@@ -37,6 +37,14 @@ Main.prototype.initLoader = function() {
   if (!this.loaderLogo || !this.logoLinks.length || !this.loaderLogo || !this.loaderOverlay || !this.hiddenContent) {
     return;
   }
+
+  setTimeout(() => {
+    document.querySelector('.loader-logo').style.animation = 'toTop 2s';
+  }, 3000);
+
+  setTimeout(() => {
+    document.querySelector('.overlay').style.animation = 'opacity 2.5s';
+  }, 3000);
 
   this.loaderLogo.addEventListener('animationend', () => {
     this.logoLinks.forEach((link) => {
@@ -114,30 +122,6 @@ Main.prototype.smoothAnchors = function() {
       }
     });
   });
-};
-
-/**
- * Back to top button handler.
- *
- * @param {number} trigger Scroll height in pixels, when "back to top" button have to shows up
- *
- * @return {undefined}
- **/
-Main.prototype.backToTop = function(trigger = 1000) {
-  if (this.backToTopBtn) {
-    jQuery(window).scroll(() => {
-      if (jQuery(window).scrollTop() >= trigger) {
-        this.backToTopBtn.classList.remove('hidden');
-      } else {
-        this.backToTopBtn.classList.add('hidden');
-      }
-    });
-
-    this.backToTopBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
 };
 
 /**
@@ -288,58 +272,28 @@ Main.prototype.initForms = function() {
 };
 
 Main.prototype.setPhotoSlider = function() {
-  if (typeof jQuery !== 'function' || !document.querySelector('.gallery__slider')) return;
+  if (typeof jQuery !== 'function' || !document.querySelector('.photo-gallery')) return;
 
-  jQuery('.gallery__slider').slick({
-    prevArrow: jQuery('.gallery__slider-nav-arrow-left'),
-    nextArrow: jQuery('.gallery__slider-nav-arrow-right'),
+  jQuery('.photo-gallery .gallery__slider').slick({
+    prevArrow: jQuery('.photo-gallery .gallery__slider-nav-arrow-left'),
+    nextArrow: jQuery('.photo-gallery .gallery__slider-nav-arrow-right'),
     dots: false,
     slidesPerRow: 4,
-    rows: 2,
-    responsive: [
-      {
-        breakpoint: 2048,
-        settings: {
-          slidesPerRow: 6,
-          rows: 2
-        }
-      },
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesPerRow: 5,
-          rows: 2
-        }
-      },
-      {
-        breakpoint: 1367,
-        settings: {
-          slidesPerRow: 5,
-          rows: 2
-        }
-      },
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesPerRow: 3,
-          rows: 2
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesPerRow: 2,
-          rows: 2
-        }
-      },
-      {
-        breakpoint: 540,
-        settings: {
-          slidesPerRow: 1,
-          rows: 1
-        }
-      }
-    ]
+    rows: 3,
+    responsive: mainState.photoGallerySettings,
+  });
+};
+
+Main.prototype.setVideoSlider = function() {
+  if (typeof jQuery !== 'function' || !document.querySelector('.video-gallery')) return;
+
+  jQuery('.video-gallery .gallery__slider').slick({
+    prevArrow: jQuery('.video-gallery .gallery__slider-nav-arrow-left'),
+    nextArrow: jQuery('.video-gallery .gallery__slider-nav-arrow-right'),
+    dots: false,
+    slidesPerRow: 4,
+    rows: 3,
+    responsive: mainState.videoGallerySettings,
   });
 };
 
@@ -347,8 +301,7 @@ Main.prototype.setAboutSlider = function() {
   if (typeof jQuery !== 'function' || !document.querySelector('.about-us__carousel-container')) return;
 
   jQuery('.about-us__carousel-container').slick({
-    prevArrow: '',
-    nextArrow: '',
+    arrows: false,
     dots: false,
   });
 };
@@ -401,6 +354,17 @@ Main.prototype.initVideoViewer = function() {
   });
 };
 
+Main.prototype.setOnePageScroll = function() {
+  if (typeof jQuery !== 'function') return;
+
+  jQuery('.main').onepage_scroll({
+    sectionContainer: '.main > section',
+    pagination: false,
+    loop: false,
+    responsiveFallback: 1201,
+  })
+};
+
 
 // One by one methods executing
 Main.prototype.init = function() {
@@ -408,12 +372,13 @@ Main.prototype.init = function() {
   this.currentLanguagePreventClicking();
   this.initHamburgerMenu();
   this.smoothAnchors();
-  // this.backToTop();
   this.initForms();
   this.setPhotoSlider();
+  this.setVideoSlider();
   this.initPhotoViewer();
   this.initVideoViewer();
   this.setAboutSlider();
+  this.setOnePageScroll();
 };
 
 document.addEventListener('DOMContentLoaded', () => {

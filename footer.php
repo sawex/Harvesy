@@ -50,9 +50,9 @@ $motto = wp_kses_post( get_field( 'motto' ) );
 					</div>
 				</div>
 			</div>
-<!--    TODO: Fix grammar -->
-			<div class="main-footer__copyrigt-container">
-				<p class="main-footer__copyrygt">
+
+			<div class="main-footer__copyright-container">
+				<p class="main-footer__copyright">
           <?php
             printf(
               esc_html__( 'Harvesy studio © %d, All rights reserved', 'mst_harvesy' ),
@@ -63,15 +63,5 @@ $motto = wp_kses_post( get_field( 'motto' ) );
 			</div>
 	</footer>
 
-  <!-- Popups -->
-  <div class="background-popup"></div>
+	<?php wp_footer();?>
 
-	<?php
-    get_template_part( 'template-parts/popups/popup', 'callback' );
-    get_template_part( 'template-parts/popups/popup', 'book' );
-
-    wp_footer();
-  ?>
-
-</body>
-</html>

@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Verba Danil
 Author URI: https://github.com/sawex
 Description: Landing page for video operator
-Version: 1.0.2
+Version: 1.0.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mst_harvesy
@@ -39,6 +39,9 @@ body {
   min-height: 90px;
   width: 100%;
   border-bottom: 1px solid #fff;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 }
 
 .main-header__navbar {
@@ -49,6 +52,8 @@ body {
   align-items: center;
   padding: 0 70px;
   position: relative;
+  z-index: 99;
+  background-color: #000;
 }
 
 .main-header__nav-menu {
@@ -76,6 +81,13 @@ body {
   letter-spacing: 2px;
   color: #8F8F8F;
   transition: ease-in-out .3s;
+}
+
+.main-header__nav-link--active {
+  color: #fff;
+  transition: ease-in-out .3s;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
 }
 
 .main-header__nav-link:hover {
@@ -187,6 +199,7 @@ body {
   margin: 0;
   margin-left: 70px;
   margin-bottom: 24px;
+  display: none;
 }
 
 .tertinary-title {
@@ -201,7 +214,7 @@ body {
 }
 
 .gallery {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   position: relative;
   overflow: hidden;
 }
@@ -210,6 +223,7 @@ body {
   /*display: flex;*/
   /*flex-wrap: wrap;*/
   position: relative;
+  height: 100%;
 }
 
 .gallery__slider-img-box {
@@ -370,7 +384,7 @@ body {
 }
 
 .section-padding {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
 }
 
 .box-padding {
@@ -514,6 +528,7 @@ body {
   background-color: #000;
   min-height: 150px;
   margin-top: 100px;
+  display: none;
 }
 
 .main-footer__wrap {
@@ -628,7 +643,7 @@ body {
   height: 28px;
 }
 
-.main-footer__copyrigt-container {
+.main-footer__copyright-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -637,7 +652,7 @@ body {
   height: 25px;
 }
 
-.main-footer__copyrigt-container p {
+.main-footer__copyright-container p {
   color: #fff;
   font-family: Myriad, sans-serif;
   font-size: 14px;
@@ -813,6 +828,8 @@ body {
   width: 100%;
   min-height: 90px;
   display: flex;
+  z-index: 999;
+  background-color: #000;
 }
 
 .mobile-buttons {
@@ -985,16 +1002,16 @@ ul li ul .mobile-header__social-dropdown-list {
 .loader-logo {
   width: 476.2px;
   height: 363.4px;
-  width: 105px;
-    height: 80px;
+  /*width: 105px;*/
+    /*height: 80px;*/
   z-index: 99999;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: toTop 2s;
+  /*animation: toTop 2s;*/
   transition: ease-in-out 1s; 
-    opacity: .2;
+    /*opacity: .2;*/
 }
 
 .loader-content-hidden {
@@ -1009,7 +1026,7 @@ ul li ul .mobile-header__social-dropdown-list {
 
 .overlay {
   background: #000;
-  animation: opacity 2s;
+  /*animation: opacity 2s;*/
   transition: ease-in-out 1s; 
   position: fixed;
   top: 0;
@@ -1017,11 +1034,12 @@ ul li ul .mobile-header__social-dropdown-list {
   right: 0;
   bottom: 0;
   z-index: 9999;
+  /*opacity: 1;*/
 }
 
 @keyframes opacity {
-  from {opacity: 1;}
-  to { opacity: 0;}
+  from {opacity: 1; transition: ease-in-out 1s;}
+  to {opacity: 0; transition: ease-in-out 1s;}
 }
 
 @keyframes toTop {
@@ -1118,7 +1136,83 @@ ul li ul .mobile-header__social-dropdown-list {
   transition: ease-in .6s;
 }
 
+/*Slick*/
+.slick-list,
+.slick-track,
+.gallery__slider-img-box {
+  height: 100%;
+}
+
+.slick-slide > div {
+  height: 30.8%;
+}
+
+.page-404__wrap {
+  width: 100%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page-404__title {
+  color: #fff;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+  font-size: 54px;
+  text-align: center;
+}
+
+.page-404__to-home-btn {
+  text-decoration: none;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.page-404__title--top {
+  font-size: 144px;
+}
+
 @media screen and (max-width: 1200px) {
+  .main-footer {
+    display: block;
+  }
+
+  .secondary-title {
+    display: block;
+    padding-top: 20px;
+  }
+
   .mobile-header {
     display: block;
   }
@@ -1201,6 +1295,15 @@ ul li ul .mobile-header__social-dropdown-list {
   .gallery__slider-nav-arrow-left::before, 
   .gallery__slider-nav-arrow-right::before {
     content: none;
+  }
+
+  .contacts {
+    padding-top: 50px;
+  }
+
+  .contacts,
+  .about-us {
+    height: auto !important;
   }
 }
 
@@ -1322,6 +1425,21 @@ ul li ul .mobile-header__social-dropdown-list {
     flex-direction: column;
     align-items: center;
   }
+
+  .page-404__title {
+    font-size: 40px;
+  }
+  
+  .page-404__title--top {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 495px) {
+  .loader-logo {
+    width: 280px;
+    height: 213.5px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -1378,4 +1496,22 @@ ul li ul .mobile-header__social-dropdown-list {
 
 .slick-slide > div {
   margin-bottom: -5px;
+}
+
+#sb_instagram .sb_instagram_header a {
+  color: #fff;
+}
+
+#sb_instagram.sbi_col_4 #sbi_images .sbi_item {
+  width: 33.3%;
+  height: 130px;
+}
+
+#sb_instagram .sbi_photo_wrap {
+  width: 100%;
+  height: 100%;
+}
+
+#sb_instagram .sbi_photo {
+  width: 100%;
 }

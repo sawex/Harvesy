@@ -17,7 +17,10 @@
   <form class="popup__form booking-popup__form">
     <label class="popup__label">
       <?php esc_html_e( 'Your name', 'mst_harvesy' ); ?>
-      <input name="name" class="popup__input" type="text" placeholder="Viktor">
+      <input name="name"
+             class="popup__input"
+             type="text"
+             placeholder="<?php esc_attr_e( 'John Doe', 'mst_harvesy' ); ?>">
     </label>
 
     <label class="popup__label">

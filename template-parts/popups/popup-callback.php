@@ -19,10 +19,13 @@
       <?php esc_html_e( 'Your phone number', 'mst_harvesy' ); ?>
       <input name="phone" class="popup__input popup__input--tel" type="tel" placeholder="+380671122333" required="">
     </label>
-    <!--      TODO: Change Viktor and add name icon -->
+
     <label class="popup__label">
       <?php esc_html_e( 'Your name', 'mst_harvesy' ); ?>
-      <input name="name" class="popup__input" type="text" placeholder="Viktor">
+      <input name="name"
+             class="popup__input"
+             type="text"
+             placeholder="<?php esc_attr_e( 'John Doe', 'mst_harvesy' ); ?>">
     </label>
 
     <input type="submit"

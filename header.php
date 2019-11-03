@@ -8,9 +8,6 @@
  *
  * @package Harvesy
  */
-
-/* @var string $loader_logo_src */
-$loader_logo_src = esc_url( get_field('loader_logo') );
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +20,11 @@ $loader_logo_src = esc_url( get_field('loader_logo') );
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
-  <?php if ( ! empty( $loader_logo_src ) ) { ?>
-	<img src="<?php echo $loader_logo_src; ?>"
-       alt=""
-       class="main-header__logo-img logo__image loader-logo">
-  <?php } ?>
+  <?php
+    if ( function_exists( 'mst_harvesy_the_loader_logo' ) ) {
+      mst_harvesy_the_loader_logo();
+    }
+  ?>
 
 	<div class="overlay"></div>
 

@@ -8,8 +8,41 @@
  */
 
 if ( ! defined('MST_HARVESY_VER' ) ) {
-	define( 'MST_HARVESY_VER', '1.0.2' );
+	define( 'MST_HARVESY_VER', '1.0.3' );
 }
+
+/**
+ * Creates custom ACF theme settings page.
+ */
+function mst_harvesy_register_settings() {
+  if ( !function_exists('acf_add_options_page') ) return;
+
+  $parent = acf_add_options_page( [
+    'page_title' => __( 'Theme settings', 'mst_harvesy' ),
+    'menu_slug' => 'theme-settings',
+    'autoload' => true,
+  ] );
+
+  acf_add_options_sub_page( [
+    'page_title' => __( 'General Settings', 'mst_harvesy' ),
+    'menu_title' => 'General',
+    'parent_slug'   => $parent['menu_slug'],
+    'menu_slug'     => 'general-settings'
+  ] );
+}
+
+add_action('acf/init', 'mst_harvesy_register_settings');
+
+/**
+ * Set default and current settings language as English,
+ * to make settings untranslatable.
+ */
+function mst_bajk_settings_default_language() {
+  return 'en';
+}
+
+add_filter('acf/settings/default_language', 'mst_bajk_settings_default_language');
+add_filter('acf/settings/current_language', 'mst_bajk_settings_default_language');
 
 if ( ! function_exists( 'mst_harvesy_setup' ) ) :
 	/**
@@ -136,9 +169,19 @@ add_action( 'widgets_init', 'mst_harvesy_widgets_init' );
  * Enqueue scripts and styles.
  */
 function mst_harvesy_scripts() {
+  $photo_gallery_adaptive = get_field( 'photo_gallery_adaptive', 'option' ) ?: [];
+  $video_gallery_adaptive = get_field( 'video_gallery_adaptive', 'option' ) ?: [];
+
 	wp_enqueue_style(
 		'mst_harvesy-bootstrap-css',
 		get_template_directory_uri() . '/assets/css/bootstrap-grid.min.css',
+		[],
+		MST_HARVESY_VER
+	);
+
+	wp_enqueue_style(
+		'mst_harvesy-onepage-css',
+		get_template_directory_uri() . '/assets/css/onepage-scroll.min.css',
 		[],
 		MST_HARVESY_VER
 	);
@@ -158,6 +201,14 @@ function mst_harvesy_scripts() {
 	);
 
 	wp_enqueue_script( 'jquery' );
+
+	wp_enqueue_script(
+		'mst_harvesy-onepage-js',
+		get_template_directory_uri() . '/assets/js/onepage-scroll.min.js',
+		[],
+		MST_HARVESY_VER,
+		true
+	);
 
 	wp_enqueue_script(
 		'mst_harvesy-slick-js',
@@ -182,16 +233,18 @@ function mst_harvesy_scripts() {
 		MST_HARVESY_VER,
 		true
 	);
+
+	wp_localize_script(
+    'mst_harvesy-main',
+    'mainState',
+    [
+      'photoGallerySettings' => $photo_gallery_adaptive,
+      'videoGallerySettings' => $video_gallery_adaptive,
+    ]
+  );
 }
 
 add_action( 'wp_enqueue_scripts', 'mst_harvesy_scripts' );
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
 
 /**
  * Set custom logo classes.
@@ -255,3 +308,21 @@ function mst_harvesy_handle_callback() {
 
 add_action( 'wp_ajax_mst_harvesy_cb', 'mst_harvesy_handle_callback' );
 add_action( 'wp_ajax_nopriv_mst_harvesy_cb', 'mst_harvesy_handle_callback' );
+
+/**
+ * Returns <img> element with custom site logo.
+ */
+function mst_harvesy_the_loader_logo() {
+  /* @var string $loader_logo_src */
+  $loader_logo_src = esc_url( get_field('loader_logo', 'option' ) );
+
+  if ( ! empty( $loader_logo_src ) ) {
+  ?>
+
+    <img src="<?php echo $loader_logo_src; ?>"
+         alt=""
+         class="main-header__logo-img logo__image loader-logo">
+
+  <?php
+  }
+}
