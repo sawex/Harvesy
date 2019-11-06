@@ -9,6 +9,7 @@ const Main = function() {
   this.navigationMenu = document.querySelector('.main-header__nav-menu:not(.mobile-header__nav-menu)');
   this.socialBtns = document.querySelector('.desktop-header .textwidget');
   this.langMenu = document.querySelector('#language-menu');
+  this.deskLangMenu = document.querySelector('#language-menu-desktop');
 
   // Mobile menu elements
   this.hamburgerBtn = document.querySelector('.hamburger');
@@ -62,6 +63,8 @@ Main.prototype.initLoader = function() {
     this.logoLinks.forEach((link) => {
       link.style.opacity = '1';
     });
+
+    this.deskLangMenu.style.opacity = '1';
 
     this.loaderLogo.style.display = 'none';
     this.loaderOverlay.style.display = 'none';

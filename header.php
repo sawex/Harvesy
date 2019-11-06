@@ -18,9 +18,9 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-  <?php wp_body_open(); ?>
-
   <?php
+    wp_body_open();
+
     if ( function_exists( 'mst_harvesy_the_loader_logo' ) ) {
       mst_harvesy_the_loader_logo();
     }
@@ -86,7 +86,7 @@
 
 						wp_nav_menu( [
 							'theme_location'  => 'lang-menu',
-							'menu_id'         => 'language-menu',
+							'menu_id'         => 'language-menu-desktop',
 							'container'			  => false,
 						] );
 

@@ -15,7 +15,7 @@ if ( ! defined('MST_HARVESY_VER' ) ) {
  * Creates custom ACF theme settings page.
  */
 function mst_harvesy_register_settings() {
-  if ( !function_exists('acf_add_options_page') ) return;
+  if ( ! function_exists( 'acf_add_options_page' ) ) return;
 
   $parent = acf_add_options_page( [
     'page_title' => __( 'Theme settings', 'mst_harvesy' ),
@@ -38,18 +38,18 @@ function mst_harvesy_register_settings() {
   ] );
 }
 
-add_action('acf/init', 'mst_harvesy_register_settings');
+add_action( 'acf/init', 'mst_harvesy_register_settings' );
 
 /**
  * Set default and current settings language as English,
  * to make settings untranslatable.
  */
-function mst_bajk_settings_default_language() {
+function mst_harvesy_settings_default_language() {
   return 'en';
 }
 
-add_filter('acf/settings/default_language', 'mst_bajk_settings_default_language');
-add_filter('acf/settings/current_language', 'mst_bajk_settings_default_language');
+add_filter('acf/settings/default_language', 'mst_harvesy_settings_default_language');
+add_filter('acf/settings/current_language', 'mst_harvesy_settings_default_language');
 
 if ( ! function_exists( 'mst_harvesy_setup' ) ) :
 	/**
@@ -130,36 +130,6 @@ add_action( 'after_setup_theme', 'mst_harvesy_setup' );
  */
 function mst_harvesy_widgets_init() {
 	register_sidebar( [
-		'name'          => esc_html__( 'Desktop header social navigation', 'mst_harvesy' ),
-		'id'            => 'desktop-header-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'mst_harvesy' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '',
-	] );
-
-	register_sidebar( [
-		'name'          => esc_html__( 'Mobile header social navigation', 'mst_harvesy' ),
-		'id'            => 'mobile-header-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'mst_harvesy' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '',
-	] );
-
-	register_sidebar( [
-		'name'          => esc_html__( 'Footer social navigation', 'mst_harvesy' ),
-		'id'            => 'footer-header-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'mst_harvesy' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '',
-	] );
-
-	register_sidebar( [
 		'name'          => esc_html__( 'Instagram widget area', 'mst_harvesy' ),
 		'id'            => 'instagram-sidebar',
 		'description'   => esc_html__( 'Add widgets here.', 'mst_harvesy' ),
@@ -176,8 +146,13 @@ add_action( 'widgets_init', 'mst_harvesy_widgets_init' );
  * Enqueue scripts and styles.
  */
 function mst_harvesy_scripts() {
+  /* @var array $photo_gallery_adaptive */
   $photo_gallery_adaptive = get_field( 'photo_gallery_adaptive', 'option' ) ?: [];
+
+  /* @var array $video_gallery_adaptive */
   $video_gallery_adaptive = get_field( 'video_gallery_adaptive', 'option' ) ?: [];
+
+  /* @var int $loader_delay_sec */
   $loader_delay_sec = get_field( 'loader_delay', 'option' ) ?: 6;
 
 	wp_enqueue_style(
@@ -323,7 +298,7 @@ add_action( 'wp_ajax_nopriv_mst_harvesy_cb', 'mst_harvesy_handle_callback' );
  */
 function mst_harvesy_the_loader_logo() {
   /* @var string $loader_logo_src */
-  $loader_logo_src = esc_url( get_field('loader_logo', 'option' ) );
+  $loader_logo_src = esc_url( get_field( 'loader_logo', 'option' ) );
 
   if ( ! empty( $loader_logo_src ) ) {
   ?>
