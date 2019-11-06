@@ -2,7 +2,7 @@ const hambButton = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-header__nav-container');
 const mobileMenuList = document.querySelector('.mobile-header__nav-menu');
 const listItem = document.querySelectorAll('.main-header__nav-list-item');
-const langMenu = document.querySelector('.lang-label--in-menu');
+const langMenu = document.querySelector('#language-menu');
 const booking = document.querySelectorAll('.booking');
 const overlay = document.querySelector('.background-popup');
 const closeButtons = document.querySelectorAll('.close-btn');
@@ -38,7 +38,7 @@ hambButton.addEventListener('click', () => {
     listItem.forEach((el) => {
       el.classList.toggle('opacity');
     });
-    langMenu.classList.toggle('opacity');
+    // langMenu.classList.toggle('opacity');
   }, 600);
 });
 

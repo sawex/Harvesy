@@ -23,6 +23,7 @@ get_header();
   <?php
     get_template_part( 'template-parts/popups/popup', 'callback' );
     get_template_part( 'template-parts/popups/popup', 'book' );
+    get_template_part( 'template-parts/popups/popup', 'success' );
   ?>
 
 </body>

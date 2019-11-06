@@ -41,12 +41,8 @@ $motto = wp_kses_post( get_field( 'motto' ) );
 						</div>
 
 						<nav class="main-footer__social-nav">
-              <?php
-                if ( is_active_sidebar( 'footer-header-sidebar' ) ) {
-                  dynamic_sidebar( 'footer-header-sidebar' );
-                }
-              ?>
-						</nav>
+              <?php get_template_part( 'template-parts/footer/content', 'social-links' ); ?>
+            </nav>
 					</div>
 				</div>
 			</div>

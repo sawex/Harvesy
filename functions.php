@@ -29,6 +29,13 @@ function mst_harvesy_register_settings() {
     'parent_slug'   => $parent['menu_slug'],
     'menu_slug'     => 'general-settings'
   ] );
+
+  acf_add_options_sub_page( [
+    'page_title' => __( 'Social Settings', 'mst_harvesy' ),
+    'menu_title' => 'Social',
+    'parent_slug'   => $parent['menu_slug'],
+    'menu_slug'     => 'social-settings'
+  ] );
 }
 
 add_action('acf/init', 'mst_harvesy_register_settings');
@@ -171,6 +178,7 @@ add_action( 'widgets_init', 'mst_harvesy_widgets_init' );
 function mst_harvesy_scripts() {
   $photo_gallery_adaptive = get_field( 'photo_gallery_adaptive', 'option' ) ?: [];
   $video_gallery_adaptive = get_field( 'video_gallery_adaptive', 'option' ) ?: [];
+  $loader_delay_sec = get_field( 'loader_delay', 'option' ) ?: 6;
 
 	wp_enqueue_style(
 		'mst_harvesy-bootstrap-css',
@@ -240,6 +248,7 @@ function mst_harvesy_scripts() {
     [
       'photoGallerySettings' => $photo_gallery_adaptive,
       'videoGallerySettings' => $video_gallery_adaptive,
+      'loaderDelayMs' => $loader_delay_sec * 1000,
     ]
   );
 }

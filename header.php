@@ -48,12 +48,10 @@
 									'menu_id'         => 'language-menu',
 									'container'			  => false,
 								] );
-							?>
 
-							<?php
 								wp_nav_menu( [
 									'theme_location'  => 'header-menu',
-									'menu_id'         => 'primary-menu',
+									'menu_id'         => 'primary-menu-mobile',
 									'container'			  => false,
 									'menu_class' 		  => 'main-header__nav-menu mobile-header__nav-menu',
 									'list_item_class' => 'main-header__nav-list-item',
@@ -62,14 +60,11 @@
 							?>
 						</div>
 						
-						<?php the_custom_logo(); ?>
-
 						<?php
-            	if ( is_active_sidebar( 'mobile-header-sidebar' ) ) {
-              	dynamic_sidebar( 'mobile-header-sidebar' );
-            	}
-            ?>
-					</nav>
+              the_custom_logo();
+						  get_template_part( 'template-parts/header/content', 'mobile-social-links' );
+						?>
+          </nav>
 				</div>
 			</div>
 		</div>
@@ -80,29 +75,23 @@
 					<?php
             wp_nav_menu( [
               'theme_location'  => 'header-menu',
-              'menu_id'         => 'primary-menu',
+              'menu_id'         => 'primary-menu-desktop',
               'container'			  => false,
               'menu_class' 		  => 'main-header__nav-menu',
               'list_item_class' => 'main-header__nav-list-item',
               'link_class' 	 	  => 'main-header__nav-link',
             ] );
-					?>
 
-					<?php the_custom_logo(); ?>
+					  the_custom_logo();
 
-					<?php
 						wp_nav_menu( [
 							'theme_location'  => 'lang-menu',
 							'menu_id'         => 'language-menu',
 							'container'			  => false,
 						] );
-					?>
 
-					<?php
-           	if ( is_active_sidebar( 'desktop-header-sidebar' ) ) {
-             	dynamic_sidebar( 'desktop-header-sidebar' );
-           	}
-          ?>
+					  get_template_part( 'template-parts/header/content', 'desktop-social-links' );
+					?>
 				</nav>
 			</div>
 		</div>
