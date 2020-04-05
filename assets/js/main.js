@@ -305,6 +305,7 @@ Main.prototype.setPhotoSlider = function() {
     slidesPerRow: 4,
     rows: 3,
     responsive: mainState.photoGallerySettings,
+    accessibility: false,
   });
 };
 
@@ -318,6 +319,7 @@ Main.prototype.setVideoSlider = function() {
     slidesPerRow: 4,
     rows: 3,
     responsive: mainState.videoGallerySettings,
+    accessibility: false,
   });
 };
 
@@ -412,6 +414,14 @@ Main.prototype.setDesktopAnchors = function() {
   });
 };
 
+Main.prototype.initLazyload = function() {
+  if (typeof LazyLoad !== 'function') return;
+
+  new LazyLoad({
+    elements_selector: ".lazy"
+  });
+};
+
 // One by one methods executing
 Main.prototype.init = function() {
   this.initLoader();
@@ -426,6 +436,7 @@ Main.prototype.init = function() {
   this.setAboutSlider();
   this.setOnePageScroll();
   this.setDesktopAnchors();
+  this.initLazyload();
 };
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -210,6 +210,14 @@ function mst_harvesy_scripts() {
 	);
 
 	wp_enqueue_script(
+		'mst_harvesy-lazyload-js',
+		get_template_directory_uri() . '/assets/js/lazyload.min.js',
+		[],
+		MST_HARVESY_VER,
+		true
+	);
+
+	wp_enqueue_script(
 		'mst_harvesy-main',
 		get_template_directory_uri() . '/assets/js/main.js',
 		[],

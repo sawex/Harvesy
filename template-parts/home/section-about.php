@@ -39,7 +39,7 @@ $about_us_text = wp_kses_post( $fields['about_us_text'] );
                 ?>
 
                 <div class="about-us__carousel-item">
-                  <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" class="about-us__carousel-img">
+                  <img src="" data-src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" class="about-us__carousel-img lazy">
                 </div>
 
                 <?php

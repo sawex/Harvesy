@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2019-11-05 18:12+0000\n"
+"POT-Creation-Date: 2019-11-02 16:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,35 +42,35 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: functions.php:83
+#: functions.php:72
 msgid "Header menu"
 msgstr ""
 
-#: functions.php:84
+#: functions.php:73
 msgid "Footer menu"
 msgstr ""
 
-#: functions.php:85
+#: functions.php:74
 msgid "Language menu"
 msgstr ""
 
-#: functions.php:126
+#: functions.php:115
 msgid "Desktop header social navigation"
 msgstr ""
 
-#: functions.php:128 functions.php:138 functions.php:148 functions.php:158
+#: functions.php:117 functions.php:127 functions.php:137 functions.php:147
 msgid "Add widgets here."
 msgstr ""
 
-#: functions.php:136
+#: functions.php:125
 msgid "Mobile header social navigation"
 msgstr ""
 
-#: functions.php:146
+#: functions.php:135
 msgid "Footer social navigation"
 msgstr ""
 
-#: functions.php:156
+#: functions.php:145
 msgid "Instagram widget area"
 msgstr ""
 
@@ -102,17 +102,13 @@ msgstr ""
 msgid "Harvesy studio © %d, All rights reserved"
 msgstr ""
 
-#: template-parts/popups/popup-success.php:13
-msgid "Thank you, your application has been sent!"
-msgstr ""
-
 #: template-parts/popups/popup-callback.php:14
 #: template-parts/popups/popup-book.php:14
 msgid "Close popup"
 msgstr ""
 
 #: template-parts/popups/popup-callback.php:19
-#: template-parts/popups/popup-book.php:27
+#: template-parts/popups/popup-book.php:24
 msgid "Your phone number"
 msgstr ""
 
@@ -121,25 +117,20 @@ msgstr ""
 msgid "Your name"
 msgstr ""
 
-#: template-parts/popups/popup-callback.php:28
-#: template-parts/popups/popup-book.php:23
-msgid "John Doe"
-msgstr ""
-
-#: template-parts/popups/popup-callback.php:32
-#: template-parts/popups/popup-book.php:53
+#: template-parts/popups/popup-callback.php:29
+#: template-parts/popups/popup-book.php:50
 msgid "Send"
 msgstr ""
 
-#: template-parts/popups/popup-book.php:32
+#: template-parts/popups/popup-book.php:29
 msgid "Your email"
 msgstr ""
 
-#: template-parts/popups/popup-book.php:41
+#: template-parts/popups/popup-book.php:38
 msgid "Task description"
 msgstr ""
 
-#: template-parts/popups/popup-book.php:45
+#: template-parts/popups/popup-book.php:42
 msgid "A brief description of the service you would like to receive"
 msgstr ""
 

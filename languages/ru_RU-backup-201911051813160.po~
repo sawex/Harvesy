@@ -1,6 +1,5 @@
 # Copyright (C) 2017 Automattic
 # This file is distributed under the GNU General Public License v2 or later.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
@@ -9,70 +8,72 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-11-05 18:12+0000\n"
+"Last-Translator: root <psknyazevich@gmail.com>\n"
+"Language-Team: Russian\n"
 "X-Generator: Loco https://localise.biz/\n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Loco-Version: 2.3.1; wp-5.2.4"
 
 #. Name of the template
 msgid "Home page"
-msgstr ""
+msgstr "Главная"
 
 #: 404.php:18
 msgid "There is no such page"
-msgstr ""
+msgstr "Такой страницы не существует"
 
 #: 404.php:22
 msgid "Homepage"
-msgstr ""
+msgstr "На главную"
 
 #. translators: %s: search query.
 #: search.php:22
 #, php-format
 msgid "Search Results for: %s"
-msgstr ""
+msgstr "Результаты поиска для: %s"
 
 #: functions.php:21
 msgid "Theme settings"
-msgstr ""
+msgstr "Настройки темы"
 
 #: functions.php:27
 msgid "General Settings"
-msgstr ""
+msgstr "Основные настройки"
 
 #: functions.php:83
 msgid "Header menu"
-msgstr ""
+msgstr "Меню хедера"
 
 #: functions.php:84
 msgid "Footer menu"
-msgstr ""
+msgstr "Меню футера"
 
 #: functions.php:85
 msgid "Language menu"
-msgstr ""
+msgstr "Языковое меню"
 
 #: functions.php:126
 msgid "Desktop header social navigation"
-msgstr ""
+msgstr "Социальная навигация хедера"
 
 #: functions.php:128 functions.php:138 functions.php:148 functions.php:158
 msgid "Add widgets here."
-msgstr ""
+msgstr "Добовить виджеты тут."
 
 #: functions.php:136
 msgid "Mobile header social navigation"
-msgstr ""
+msgstr "Социальная навигация в мобильном хедере"
 
 #: functions.php:146
 msgid "Footer social navigation"
-msgstr ""
+msgstr "Социальная навигация в футере"
 
 #: functions.php:156
 msgid "Instagram widget area"
-msgstr ""
+msgstr "Зона для виджета инстаграма"
 
 #. translators: 1: title.
 #: comments.php:35
@@ -88,38 +89,39 @@ msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: comments.php:66
 msgid "Comments are closed."
-msgstr ""
+msgstr "Комментарии закрыты."
 
 #: footer.php:33
 msgid "Booking"
-msgstr ""
+msgstr "Заказать"
 
 #: footer.php:58
 #, php-format
 msgid "Harvesy studio © %d, All rights reserved"
-msgstr ""
+msgstr "Harvesy studio © %d, Все права защищены"
 
 #: template-parts/popups/popup-success.php:13
 msgid "Thank you, your application has been sent!"
-msgstr ""
+msgstr "Спасибо, Ваша заявка отправлена!"
 
 #: template-parts/popups/popup-callback.php:14
 #: template-parts/popups/popup-book.php:14
 msgid "Close popup"
-msgstr ""
+msgstr "Зыкрыть модальное окно"
 
 #: template-parts/popups/popup-callback.php:19
 #: template-parts/popups/popup-book.php:27
 msgid "Your phone number"
-msgstr ""
+msgstr "Ваш номер телефона"
 
 #: template-parts/popups/popup-callback.php:24
 #: template-parts/popups/popup-book.php:19
 msgid "Your name"
-msgstr ""
+msgstr "Ваше имя"
 
 #: template-parts/popups/popup-callback.php:28
 #: template-parts/popups/popup-book.php:23
@@ -129,76 +131,76 @@ msgstr ""
 #: template-parts/popups/popup-callback.php:32
 #: template-parts/popups/popup-book.php:53
 msgid "Send"
-msgstr ""
+msgstr "Отправить"
 
 #: template-parts/popups/popup-book.php:32
 msgid "Your email"
-msgstr ""
+msgstr "Ваш email"
 
 #: template-parts/popups/popup-book.php:41
 msgid "Task description"
-msgstr ""
+msgstr "Описание задачи"
 
 #: template-parts/popups/popup-book.php:45
 msgid "A brief description of the service you would like to receive"
-msgstr ""
+msgstr "Короткое описание услуги, которую вы хотели бы получить"
 
 #: template-parts/home/section-about.php:23
 msgid "About us"
-msgstr ""
+msgstr "О нас"
 
 #: template-parts/home/section-about.php:53
 msgid "Harvesy studio"
-msgstr ""
+msgstr "Harvesy studio"
 
 #: template-parts/home/section-photos.php:17
 msgid "Photo"
-msgstr ""
+msgstr "Фото"
 
 #: template-parts/home/section-photos.php:63
 msgid "Show previous gallery photos"
-msgstr ""
+msgstr "Показать предыдущее изображение галереи фотографий"
 
 #: template-parts/home/section-photos.php:66
 msgid "Show next gallery photos"
-msgstr ""
+msgstr "Показать следующее изображение галереи фотографий"
 
 #: template-parts/home/section-videos.php:17
 msgid "Video"
-msgstr ""
+msgstr "Видео"
 
 #: template-parts/home/section-videos.php:66
 msgid "Show previous gallery videos"
-msgstr ""
+msgstr "Показать предыдущее изображение галереи видео"
 
 #: template-parts/home/section-videos.php:69
 msgid "Show next gallery videos"
-msgstr ""
+msgstr "Показать следующее изображение галереи видео"
 
 #: template-parts/home/section-contacts.php:17
 msgid "Contacts"
-msgstr ""
+msgstr "Контакты"
 
 #: template-parts/home/section-contacts.php:32
 msgid "Call me"
-msgstr ""
+msgstr "Перезвонить"
 
 #. Name of the theme
 msgid "Harvesy"
-msgstr ""
+msgstr "Harvesy"
 
 #. Description of the theme
 msgid "Landing page for video operator"
-msgstr ""
+msgstr "Посадочная страница для видео оператора"
 
 #. URI of the theme
 msgid "http://underscores.me/"
-msgstr ""
+msgstr "http://underscores.me/"
 
 #. Author of the theme
 msgid "Verba Danil"
-msgstr ""
+msgstr "Верба Данил"
 
 #. Author URI of the theme
 msgid "https://github.com/sawex"
-msgstr ""
+msgstr "https://github.com/sawex"

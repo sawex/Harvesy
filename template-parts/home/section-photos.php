@@ -39,10 +39,11 @@ $photo_gallery = get_field( 'photo_gallery' );
 
         <div class="gallery__slider-img-box" id="photo-<?php echo $id; ?>">
           <a class="gallery__slider-img-link">
-            <img src="<?php echo $src; ?>"
+            <img src=""
+                 data-src="<?php echo $src; ?>"
                  alt="<?php echo $alt; ?>"
                  data-bp="<?php echo $full; ?>"
-                 class="gallery__slider-image">
+                 class="gallery__slider-image lazy">
 
             <div class="gallery__slider-img-btn--hover gallery__slider-img-btn--photo">
               <button class="photo-gallery__opening-button"

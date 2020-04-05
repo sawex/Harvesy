@@ -43,9 +43,10 @@ $video_gallery = get_field( 'video_gallery' );
 
         <div class="gallery__slider-img-box" id="video-<?php echo $id; ?>" data-video-id="<?php echo $vimeo_id ?>">
           <a class="gallery__slider-img-link">
-            <img src="<?php echo $src; ?>"
+            <img src=""
+                 data-src="<?php echo $src; ?>"
                  alt="<?php echo $alt; ?>"
-                 class="gallery__slider-image">
+                 class="gallery__slider-image lazy">
 
             <div class="gallery__slider-img-btn--hover gallery__slider-img-btn--video">
               <button class="video-gallery__opening-button"
