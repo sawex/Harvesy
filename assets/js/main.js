@@ -1,6 +1,6 @@
 /* global jQuery, mainState */
 
-const Main = function() {
+const Main = function () {
   // Page loader elements
   this.logoLinks = document.querySelectorAll('.logo');
   this.loaderLogo = document.querySelector('.loader-logo');
@@ -39,6 +39,7 @@ const Main = function() {
     document.querySelector('.main-header__navbar a[href="#aboutus"]'),
     document.querySelector('.main-header__navbar a[href="#contacts"]'),
   ];
+  this.isMenuOpened = false;
 };
 
 /**
@@ -46,7 +47,7 @@ const Main = function() {
  *
  * @return {undefined}
  **/
-Main.prototype.initLoader = function() {
+Main.prototype.initLoader = function () {
   if (!this.loaderLogo || !this.logoLinks.length || !this.loaderLogo || !this.loaderOverlay || !this.hiddenContent) {
     return;
   }
@@ -88,7 +89,7 @@ Main.prototype.initLoader = function() {
  *
  * @version 1.0.1
  */
-Main.prototype.currentLanguagePreventClicking = function() {
+Main.prototype.currentLanguagePreventClicking = function () {
   const currentLanguages = document.querySelectorAll('.wpml-ls-current-language > a');
 
   if (currentLanguages.length) {
@@ -98,22 +99,25 @@ Main.prototype.currentLanguagePreventClicking = function() {
   }
 };
 
-Main.prototype.initHamburgerMenu = function() {
-  this.hamburgerBtn.addEventListener('click', () => {
-    this.hamburgerBtn.classList.toggle('is-active');
-    this.mobileMenu.classList.toggle('disabled');
-    this.mobileMenu.classList.toggle('animated');
-    this.mobileMenuList.classList.toggle('visible');
-    this.langMenu.classList.toggle('opacity');
+Main.prototype.initHamburgerMenu = function () {
+  this.hamburgerBtn.addEventListener('click', () => this.toggleMobileMenu());
+};
 
-    setTimeout(() => {
-      this.listItem.forEach((el) => {
-        el.classList.toggle('opacity');
-      });
+Main.prototype.toggleMobileMenu = function () {
+  this.hamburgerBtn.classList.toggle('is-active');
+  this.mobileMenu.classList.toggle('disabled');
+  this.mobileMenu.classList.toggle('animated');
+  this.mobileMenuList.classList.toggle('visible');
+  this.langMenu.classList.toggle('opacity');
+  this.isMenuOpened = !this.isMenuOpened;
 
-      this.langMenu.classList.toggle('visible');
-    }, 600);
-  });
+  setTimeout(() => {
+    this.listItem.forEach((el) => {
+      el.classList.toggle('opacity');
+    });
+
+    this.langMenu.classList.toggle('visible');
+  }, 600);
 };
 
 /**
@@ -121,9 +125,9 @@ Main.prototype.initHamburgerMenu = function() {
  *
  * @version 1.0.2
  */
-Main.prototype.smoothAnchors = function() {
+Main.prototype.smoothAnchors = function () {
   document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
 
       const pageUrl = new URL(document.URL);
@@ -154,7 +158,7 @@ Main.prototype.smoothAnchors = function() {
  *
  * @return {undefined}
  **/
-Main.prototype._openPopup = function(nodes) {
+Main.prototype._openPopup = function (nodes) {
   if (Array.isArray(nodes) && nodes.length) {
     nodes.forEach(node => {
       node.classList.add('block');
@@ -171,7 +175,7 @@ Main.prototype._openPopup = function(nodes) {
  *
  * @return {undefined}
  **/
-Main.prototype._closePopup = function(nodes) {
+Main.prototype._closePopup = function (nodes) {
   if (Array.isArray(nodes) && nodes.length) {
     nodes.forEach(node => {
       node.classList.remove('block');
@@ -181,7 +185,7 @@ Main.prototype._closePopup = function(nodes) {
   }
 };
 
-Main.prototype.sendData = function(form, validateOptions = {}) {
+Main.prototype.sendData = function (form, validateOptions = {}) {
   const formData = new FormData(form);
   const dataObj = {};
   let isValid = true;
@@ -230,7 +234,7 @@ Main.prototype.sendData = function(form, validateOptions = {}) {
  *
  * @return {undefined}
  **/
-Main.prototype.initForms = function() {
+Main.prototype.initForms = function () {
   if (!this.callbackBnt || !this.bookingBtns.length) return;
 
   // Open booking form on buttons click
@@ -295,7 +299,7 @@ Main.prototype.initForms = function() {
   });
 };
 
-Main.prototype.setPhotoSlider = function() {
+Main.prototype.setPhotoSlider = function () {
   if (typeof jQuery !== 'function' || !document.querySelector('.photo-gallery')) return;
 
   jQuery('.photo-gallery .gallery__slider').slick({
@@ -309,7 +313,7 @@ Main.prototype.setPhotoSlider = function() {
   });
 };
 
-Main.prototype.setVideoSlider = function() {
+Main.prototype.setVideoSlider = function () {
   if (typeof jQuery !== 'function' || !document.querySelector('.video-gallery')) return;
 
   jQuery('.video-gallery .gallery__slider').slick({
@@ -323,7 +327,7 @@ Main.prototype.setVideoSlider = function() {
   });
 };
 
-Main.prototype.setAboutSlider = function() {
+Main.prototype.setAboutSlider = function () {
   if (typeof jQuery !== 'function' || !document.querySelector('.about-us__carousel-container')) return;
 
   jQuery('.about-us__carousel-container').slick({
@@ -332,7 +336,7 @@ Main.prototype.setAboutSlider = function() {
   });
 };
 
-Main.prototype.initPhotoViewer = function() {
+Main.prototype.initPhotoViewer = function () {
   if (typeof BigPicture !== 'function') return;
 
   document.addEventListener('click', (e) => {
@@ -360,7 +364,7 @@ Main.prototype.initPhotoViewer = function() {
   });
 };
 
-Main.prototype.initVideoViewer = function() {
+Main.prototype.initVideoViewer = function () {
   if (typeof BigPicture !== 'function') return;
 
   document.addEventListener('click', (e) => {
@@ -380,7 +384,7 @@ Main.prototype.initVideoViewer = function() {
   });
 };
 
-Main.prototype.setOnePageScroll = function() {
+Main.prototype.setOnePageScroll = function () {
   if (typeof jQuery !== 'function') return;
 
   const self = this;
@@ -403,7 +407,7 @@ Main.prototype.setOnePageScroll = function() {
   });
 };
 
-Main.prototype.setDesktopAnchors = function() {
+Main.prototype.setDesktopAnchors = function () {
   if (typeof jQuery !== 'function') return;
 
   this.navigation[0].classList.add('main-header__nav-link--active');
@@ -414,16 +418,28 @@ Main.prototype.setDesktopAnchors = function() {
   });
 };
 
-Main.prototype.initLazyload = function() {
+Main.prototype.initLazyload = function () {
   if (typeof LazyLoad !== 'function') return;
 
   new LazyLoad({
-    elements_selector: ".lazy"
+    elements_selector: '.lazy'
+  });
+};
+
+Main.prototype.closeMenuOnDocumentClick = function () {
+  document.addEventListener('click', (e) => {
+    if (this.isMenuOpened && !e.target.closest('.mobile-header__navbar')) {
+      this.toggleMobileMenu();
+    }
+    
+    if (e.target.closest('.main-header__nav-list-item')) {
+      this.toggleMobileMenu();
+    }
   });
 };
 
 // One by one methods executing
-Main.prototype.init = function() {
+Main.prototype.init = function () {
   this.initLoader();
   this.currentLanguagePreventClicking();
   this.initHamburgerMenu();
@@ -437,6 +453,7 @@ Main.prototype.init = function() {
   this.setOnePageScroll();
   this.setDesktopAnchors();
   this.initLazyload();
+  this.closeMenuOnDocumentClick();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
