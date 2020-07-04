@@ -10,5 +10,5 @@
 ?>
 
 <div class="thx-popup">
-  <p><?php esc_html_e( 'Thank you, your application has been sent!', 'mst_harvesy' ); ?>
+  <p><?php esc_html_e('Thank you, your application has been sent!', 'mst_harvesy'); ?>
 </div>

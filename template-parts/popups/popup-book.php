@@ -11,25 +11,25 @@
 
 <div class="booking-popup popup-box form-container">
   <button class="close-btn"
-          aria-label="<?php esc_attr_e( 'Close popup', 'mst_harvesy' ); ?>">
+          aria-label="<?php esc_attr_e('Close popup', 'mst_harvesy'); ?>">
   </button>
 
   <form class="popup__form booking-popup__form">
     <label class="popup__label">
-      <?php esc_html_e( 'Your name', 'mst_harvesy' ); ?>
+      <?php esc_html_e('Your name', 'mst_harvesy'); ?>
       <input name="name"
              class="popup__input"
              type="text"
-             placeholder="<?php esc_attr_e( 'John Doe', 'mst_harvesy' ); ?>">
+             placeholder="<?php esc_attr_e('John Doe', 'mst_harvesy'); ?>">
     </label>
 
     <label class="popup__label">
-      <?php esc_html_e( 'Your phone number', 'mst_harvesy' ); ?>
+      <?php esc_html_e('Your phone number', 'mst_harvesy'); ?>
       <input name="phone" class="popup__input popup__input--tel" type="tel" placeholder="+380671122333" required="">
     </label>
 
     <label class="popup__label">
-      <?php esc_html_e( 'Your email', 'mst_harvesy' ); ?>
+      <?php esc_html_e('Your email', 'mst_harvesy'); ?>
       <input name="email"
              class="popup__input popup__input--email"
              type="email"
@@ -38,7 +38,7 @@
     </label>
 
     <label class="popup__label">
-      <?php esc_html_e( 'Task description', 'mst_harvesy' ); ?>
+      <?php esc_html_e('Task description', 'mst_harvesy'); ?>
       <textarea name="description"
                 class="popup__input popup__input--textarea"
                 placeholder="
@@ -50,7 +50,7 @@
     </label>
 
     <input type="submit"
-           value="<?php esc_html_e( 'Send', 'mst_harvesy' ); ?>"
+           value="<?php esc_html_e('Send', 'mst_harvesy'); ?>"
            class="button popup__submit-btn">
   </form>
 </div>
